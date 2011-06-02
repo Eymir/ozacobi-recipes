@@ -2,4 +2,17 @@
 <resources>
     <string name="hello">hello moto!</string>
     <string name="app_name">Ozacobi Recipes</string>
+    
+    
+    <string-array name="recipes_array">
+        <item>Mac n Cheese</item>
+        <item>Hamburger</item>
+        <item>Pad Thai</item>
+        <item>Cereal</item>
+        <item>Grilled Cheese</item>
+        <item>Chili</item>
+        <item>Steak</item>
+    </string-array>
+    
+    
 </resources>
