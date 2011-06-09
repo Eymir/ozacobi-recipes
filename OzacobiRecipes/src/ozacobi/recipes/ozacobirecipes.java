@@ -51,6 +51,7 @@ public class ozacobirecipes extends Activity {
 	        SimpleCursorAdapter recipes =
 	            new SimpleCursorAdapter(this, R.layout.recipes_row, c, from, to);
 	        setListAdapter(recipes);
+	        
 	    }
     }
     public void viewMain(View view)
