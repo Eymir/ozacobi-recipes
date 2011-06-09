@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">hello moto!</string>
+    <string name="hello">hello evin!!!!</string>
+    <string name="helloTest">hello TEESTTT!!!!</string>
     <string name="app_name">Ozacobi Recipes</string>
+    <string name="MainMenuButton"> click me!</string>
+    <string name="recipeButton">Recipes</string>
+    <string name="ingredientButton">Ingredients</string>
+    <string name = "recipeText"> RECIPE</string>
+    <string name = "ingredientText"> INGREDIENT </string>
     
     
     <string-array name="recipes_array">
