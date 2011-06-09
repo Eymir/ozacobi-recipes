@@ -1,39 +1,78 @@
 package ozacobi.recipes;
 
+import ozacobi.recipes.RecipeDbAdapter.DatabaseHelper;
 import android.app.Activity;
 import android.app.ListActivity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+//import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.SimpleCursorAdapter;
 
-public class ozacobirecipes extends ListActivity {
+
+public class ozacobirecipes extends Activity {
     /** Called when the activity is first created. */
+	private int recipeNum = 0;
+	private static RecipeDbAdapter mDbHelper;
+	private DataFiller df;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
-        
-        String[] recipes = getResources().getStringArray(R.array.recipes_array);
-        setListAdapter((ListAdapter) new ArrayAdapter<String>(this, R.layout.list_item, recipes));
-        
-        ListView lv = getListView();
-        lv.setTextFilterEnabled(true);
-        
-        lv.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                int position, long id) {
-              // When clicked, show a toast with the TextView text
-              Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-                  Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+        mDbHelper = new RecipeDbAdapter(this);
+        mDbHelper.open();
+        df = new DataFiller();
+        setContentView(R.layout.main);
 
+    }
+    
+    public void createRecipe(View view) {
+    	setContentView(R.layout.test);
+        String recipeName = "Note " + recipeNum++;
+        mDbHelper.createRecipe(recipeName);
+        //df.fillData();
+    }
+    public static class DataFiller extends ListActivity{
+    	
+    	DataFiller(){}
+    	
+	    public void fillData() {
+	        // Get all of the notes from the database and create the item list
+	        Cursor c = mDbHelper.fetchAllRecipes();
+	        startManagingCursor(c);
+	
+	        String[] from = new String[] { RecipeDbAdapter.KEY_NAME };
+	        int[] to = new int[] { R.id.text1 };
+	        
+	        // Now create an array adapter and set it to display using our row
+	        SimpleCursorAdapter recipes =
+	            new SimpleCursorAdapter(this, R.layout.recipes_row, c, from, to);
+	        setListAdapter(recipes);
+	    }
+    }
+    public void viewMain(View view)
+    {
+    	setContentView(R.layout.main);
+    }
+    
+    public void view(View view)
+    {
+    	setContentView(R.layout.test);
+    }
+    
+    public void viewIngredients(View view)
+    {
+    	setContentView(R.layout.ingredients);
+    }
+    
+    public void viewRecipes(View view)
+    {
+    	setContentView(R.layout.recipes);
+    	df.fillData();
+    }
+    
     
 }
