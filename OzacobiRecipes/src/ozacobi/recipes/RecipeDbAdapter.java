@@ -57,6 +57,7 @@ public class RecipeDbAdapter {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
         return this;
+        
     }
 
     public void close() {
