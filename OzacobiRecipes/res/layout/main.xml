@@ -1,24 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:onClick="viewRecipes"
-        android:text="recipes" />
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    
+   	<TextView
+   		android:layout_width="fill_parent"
+   		android:layout_height="wrap_content"
+		android:text="@string/searchRecipes"
+	/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:onClick="viewIngredients"
-        android:text="ingredients" />
-        
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createRecipe"
-        android:text="create recipe!" />
-</RelativeLayout>
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">	
+    	
+    	<MultiAutoCompleteTextView
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    	/>
+    	<Button
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="0"
+    		android:text="Search"
+    	/>
+    	
+	</LinearLayout>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		
+	    <Button
+	    	android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:onClick="viewRecipes"
+	        android:text="Recipes" />
+
+	    <Button
+	    	android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:onClick="viewIngredients"
+	        android:text="Ingredients" />
+	        
+	    <Button
+			android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:onClick="createRecipe"
+	        android:text="Create Recipe!" />
+	</LinearLayout>
+
+</LinearLayout>

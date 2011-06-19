@@ -8,6 +8,7 @@
     <string name="ingredientButton">Ingredients</string>
     <string name = "recipeText"> RECIPE</string>
     <string name = "ingredientText"> INGREDIENT </string>
+    <string name = "searchRecipes">Search Recipes</string>
     
     
     <string-array name="recipes_array">
